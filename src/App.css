@@ -1,0 +1,409 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+    background: url('assets/wallpaper.webp');
+    background-attachment: fixed;
+    opacity: .9;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: unset;
+    background-position: 100%;
+    padding: 20px max(2rem, 50vw - 1200px / 2);
+}
+
+
+.todo-card,
+.calendar-card,
+.status-card {
+    position: relative;
+    /* margin: 50px 0; */
+    left: 50%;
+    transform: translate(-50%);
+    /* width: 80vw; */
+    border-radius: 20px;
+    padding: 30px 50px;
+    box-shadow: 0 20px 50px rgba(13, 77, 203, 0.2);
+    background-color: white;
+}
+
+.todo-card {
+    margin-bottom: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.status-card {
+    margin-top: 20px;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    flex-grow: 1;
+}
+
+h1 {
+    font-size: 2.5em;
+    text-align: center;
+    color: rgb(87, 87, 87);
+    margin-bottom: 30px;
+}
+
+hr {
+    display: none;
+}
+
+
+form {
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, .05);
+    margin: 0 0 20px 0;
+    padding: 10px 20px;
+    padding-right: 10px;
+    border-radius: 5px 50px 50px 5px;
+}
+
+form input {
+    border: none;
+    background: none;
+    width: 100%;
+    font-size: 1em;
+}
+
+form input:focus {
+    outline: none;
+}
+
+[type=checkbox] {
+    accent-color: rgb(227, 119, 119);
+    color: white;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: rgb(227, 119, 119);
+}
+
+.button {
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: padding 0.3s ease;
+    background-color: rgb(227, 119, 119);
+}
+
+.button:hover {
+    padding: 10px 35px;
+}
+
+.del-button {
+    color: rgb(227, 119, 119);
+    transition: transform .2s ease;
+    cursor: pointer;
+    align-items: flex-end;
+    border: none;
+    background: none;
+    font-size: 1em;
+}
+
+.del-button:hover {
+    transform: scale(1.2);
+}
+
+li.task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 5px 10px #00000024;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px 0;
+    border: 1px solid white;
+    position: relative;
+    bottom: 0;
+    transition: all .3s ease;
+}
+
+li.task:hover {
+    bottom: 3px;
+    border: 1px solid #e37777a6;
+    box-shadow: 0 5px 5px #00000020;
+}
+
+.task-container {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.task-container span {
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: rgb(87, 87, 87);
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    /* margin-top: 30px;
+    border-top: 1px solid rgba(128, 128, 128, .3); */
+    padding-top: 10px;
+    align-items: center;
+}
+
+.nav {
+    margin-right: 50px
+}
+
+h3 {
+    color: rgba(128, 128, 128, .9);
+    font-weight: 600;
+    border-bottom: 1px solid rgba(128, 128, 128, .3);
+    margin-bottom: 20px;
+}
+
+.nav li {
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.filters {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    gap: 10px;
+}
+
+.filter {
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 1);
+
+}
+
+#work,
+.label-selection-button:first-child {
+    color: rgb(119, 170, 227);
+    border: 1px solid rgb(119, 170, 227);
+}
+
+#personal,
+.label-selection-button:nth-child(2) {
+    color: rgb(227, 119, 119);
+    border: 1px solid rgb(227, 119, 157);
+}
+
+#groceries,
+.label-selection-button:last-child {
+    color: #b277e3;
+    border: 1px solid #b277e3;
+}
+
+.filter i {
+    margin-left: 15px;
+}
+
+#work.selected-filters {
+    color: white;
+    background-color: rgb(119, 170, 227);
+}
+
+#personal.selected-filters {
+    color: white;
+    background-color: rgb(227, 119, 119);
+}
+
+#groceries.selected-filters {
+    color: white;
+    background-color: #b277e3;
+}
+
+.progress {
+    width: 300px;
+    height: 10px;
+    margin-bottom: 5px;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: rgb(227, 119, 119);
+    border-radius: 50px;
+}
+
+.task-labels {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    position: relative;
+}
+
+.fa-chevron-right {
+    color: #0000008e;
+    background: none;
+    border: none;
+    transition: transform .3s ease;
+}
+
+.chevron-active {
+    transform: rotate(90deg);
+}
+
+nav {
+    margin-bottom: 5px;
+}
+
+.nav-list {
+    display: flex;
+    gap: 30px;
+}
+
+.personal-selected {
+    color: #E37777 !important;
+}
+
+.work-selected {
+    color: rgb(119, 170, 227) !important;
+}
+
+.all-selected {
+    color: #b277e3 !important;
+}
+
+.card {
+    background: white;
+    margin-right: 10px;
+    height: 100%;
+}
+
+.p-calendar {
+    width: 100%;
+}
+
+.p-inputtext {
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, .2);
+
+}
+
+.p-datepicker-calendar>* {
+    padding: 4px;
+}
+
+.p-float-label label {
+    transform: translateY(-50%);
+    font-size: 10px;
+}
+
+.empty-task-list {
+    color: rgba(128, 128, 128, .9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 50px 0;
+    font-size: 1.3em;
+}
+
+.task-deadline {
+    display: flex;
+    position: relative;
+    font-size: .8em;
+    color: grey;
+    gap: 5px;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.label-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    top: 20px;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 10px 30px rgba(13, 77, 203, 0.2);
+    z-index: 20;
+    right: 30px;
+}
+
+.label-selection-button {
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid #0000001a;
+    padding: 4px 6px;
+    border-radius: 5px;
+}
+
+.label-selection-hidden {
+    display: none;
+}
+
+.calendar-compact,
+.deadline-calendar-compact {
+    display: none;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .todo-card,
+    .calendar-card,
+    .status-card {
+        padding: 30px 25px;
+    }
+
+    .filter {
+        font-size: .9em;
+    }
+
+    .progress {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    form {
+        align-items: center;
+    }
+
+    .calendar,
+    .deadline-calendar {
+        display: none;
+    }
+    .calendar-compact,
+    .deadline-calendar-compact {
+        display: block;
+    }
+
+    .card {
+        order: 3;
+    }
+}
